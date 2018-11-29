@@ -22,7 +22,7 @@ class AutoEncoder:
         output = fully_connected(inputs=hidden, num_outputs=1, activation_fn=None)
         loss = tf.reduce_mean(tf.square(output - input))
         optimizer = tf.train.AdamOptimizer(learning_rate=self.learning_rate)
-        optimizer.minimize(loss)
+        training = optimizer.minimize(loss)
 
         # 训练
         encoder = hidden
@@ -31,9 +31,8 @@ class AutoEncoder:
             init = tf.global_variables_initializer()
             sess.run(init)
             for epoch in range(self.epochs):
-                sess.run(loss, feed_dict={input: train})
-                print input, output, loss
-                loss_.append(loss)
+                _, loss_value = sess.run(training, loss, feed_dict={input: train})
+                loss_.append(loss_value)
             encode_val = encoder.eval(feed_dict={input: test})
         return encode_val, loss_
 
@@ -56,8 +55,10 @@ if __name__ == '__main__':
     ae = AutoEncoder(n_inputs=3, n_hidden=2, lr=0.01, epochs=100)
     train = np.random.randint(low=0, high=10, size=[1000, 3])
     test = np.random.randint(low=0, high=10, size=[200, 3])
-    encode_val, loss = ae.train(train, test)
-    visualization(test)
-    visualization(encode_val, 2)
+
     # encode_val, loss = ae.train(train, test)
-    # visualize_loss(list(loss), [i+1 for i in range(100)])
+    # visualization(test)
+    # visualization(encode_val, 2)
+
+    encode_val, loss = ae.train(train, test)
+    visualize_loss(list(loss), [i+1 for i in range(100)])
