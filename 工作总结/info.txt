@@ -1,0 +1,8 @@
+ssh root@10.92.35.21
+bd@123qaz
+
+http://tcl.eceibs20.com/index.php?r=front/plan/show&pid=1214
+
+hadoop集群提交有多个python文件的Spark作业：
+spark-submit --py-files cluster.zip k-means.py --master yarn-cluster
+

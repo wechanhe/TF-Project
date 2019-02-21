@@ -3,26 +3,11 @@
 
 import tensorflow as tf
 from tensorflow import keras
-from tensorflow.examples.tutorials.mnist import input_data
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report
 from util import *
 
-train_images = []
-train_labels = []
-test_images = []
-test_labels = []
-
-def load_data():
-    global train_images, train_labels, test_images, test_labels
-    data = input_data.read_data_sets('data/fashion')
-    train_images = data.train.images / 255.0
-    train_labels = data.train.labels
-    test_images = data.test.images / 255.0
-    test_labels = data.test.labels
-    print 'train images:', len(train_images), 'train labels:', len(train_labels)
-    print 'test images:', len(test_images), 'test labels', len(test_labels)
 
 def log_reg():
     # 训练LR模型，并进行预测

@@ -4,9 +4,26 @@ import pickle
 
 import matplotlib.pyplot as plt
 import numpy as np
+from tensorflow.examples.tutorials.mnist import input_data
 
 class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',
                'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']
+
+train_images = []
+train_labels = []
+test_images = []
+test_labels = []
+
+def load_data():
+    global train_images, train_labels, test_images, test_labels
+    data = input_data.read_data_sets('data/fashion')
+    train_images = data.train.images / 255.0
+    train_labels = data.train.labels
+    test_images = data.test.images / 255.0
+    test_labels = data.test.labels
+    print 'train images:', len(train_images), 'train labels:', len(train_labels)
+    print 'test images:', len(test_images), 'test labels', len(test_labels)
+    return train_images, train_labels, test_images, test_labels
 
 
 def plot_image(i, predictions_array, true_label, img):

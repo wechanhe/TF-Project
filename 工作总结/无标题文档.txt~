@@ -1,0 +1,28 @@
+﻿http://10.92.35.24:9090/pages/naruto/index.html
+
+EMR 信息:
+Master节点：3.16.11.227 ip-172-31-47-99.us-east-2.compute.internal
+Core节点: 3.17.37.98 ip-172-31-47-166.us-east-2.compute.internal
+Core节点: 3.16.158.220 ip-172-31-33-127.us-east-2.compute.internal
+
+连接示例：ssh –i mykeypair.pem hadoop@3.16.11.227 
+
+EC2信息(微服务)
+18.225.10.174
+52.14.144.254
+18.222.196.147
+18.191.255.171
+18.222.66.96
+
+连接示例：ssh ubuntu@3.16.11.227 –i mykeypair.pem
+
+hbase
+1.ssh hadoop@54.162.131.81 –i mykeypairOfVirginia.pem 
+ssh –i mykeypairOfVirginia.pem hadoop@54.162.131.81 
+（mykeypairOfVirginia.pem需要设置400权限）
+2.sudo hbase shell
+
+zookeeper地址（用于java代码连接HBase）
+ec2-54-162-131-81.compute-1.amazonaws.com:2181
+
+
